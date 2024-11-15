@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="row"><!--fila en editar-->
+    <div class="col-md-4 offset-md-4">
+        <h2>Editar Pedido</h2>
+        <!-- Aqui codigo tarjeta -->
+        <div class="card"><!--la tarjeta-->
+            <div class="card-body">
+            <form action="/editarPedido/" method="POST"> {% csrf_token %} <!-- falta action-->
+            <div class="form-group">
+              <input type="text" id="txtidped" name="txtidped" class="form-control" value="{{mispedidos.id_pedido}}"
+              minlength="1" maxlength="6" readonly required><br>
+            </div>
+            <div class="form-group  py-2">
+              <input type="text" id="txtidcli" name="txtidcli" class="form-control" value="{{mispedidos.id_cliente}}" minlength="1" maxlength="100" required><br>
+            </div>
+
+            <div class="form-group  py-2">
+              <input type="text" id="txtidp" name="txtidp" class="form-control" value="{{mispedidos.id_producto}}" minlength="1" maxlength="100" required><br>
+            </div>
+            
+            <div class="form-group  py-2">
+              <input type="text" id="txtide" name="txtide" class="form-control" value="{{mispedidos.id_empleado}}" minlength="1" maxlength="100" required><br>
+            </div>
+            <div class="form-group  py-2">
+              <input type="date" id="txtfechped" name="txtfechped"  class="form-control" value="{{mispedidos.fecha_pedido}}" required><br>
+            </div>
+            <div class="form-group  py-2">
+                <input type="date" id="txtfechent" name="txtfechent"  class="form-control" value="{{mispedidos.fecha_entrega}}" required><br>
+            </div>
+              <div class="form-group  py-2">
+                <input type="text" id="txttotal" name="txttotal"  class="form-control" value="{{mispedidos.total_pedido}}" required><br>
+            </div>
+            <div class="form-group  py-2">
+                <input type="text" id="txtesta" name="txtesta"  class="form-control" value="{{mispedidos.estado_pedido}}" required><br>
+            </div>
+            <div class="form-group  py-2">
+                <input type="text" id="txtmetodop" name="txtmetodop"  class="form-control" value="{{mispedidos.metodo_pago}}" required><br>
+            </div>
+             <div class="form-group  py-2">
+              <input type="text" id="txtidc" name="txtidc" class="form-control" value="{{mispedidos.cantidad}}" minlength="1" maxlength="100" required><br>
+            </div>
+            <div class="form-group  py-2">
+              <button type="submit" class="btn btn-primary">Guardar Pedido</button>
+            </div>
+          </form>
+            </div>
+          </div><!--la tarjeta-->
+         <!-- Aqui codigo tarjeta -->
+    </div>
+</div> <!--fila en editar-->
+{% endblock %}

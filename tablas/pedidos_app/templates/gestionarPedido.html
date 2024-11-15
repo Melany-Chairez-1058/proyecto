@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+<div class="row"><!--la fila-->
+<div class="col-sm-12 col-md-4 col-lg-4 xl-4"> <!--la columna izq-->
+    <h1>Registrar Pedido</h1>
+    <div class="card"><!--la tarjeta-->
+      <div class="card-body">
+      <form action="registrarPedido/" method="POST"> {% csrf_token %}<!-- falta action-->
+      <div class="form-group">
+        <input type="text" id="txtidped" name="txtidped" class="form-control"  
+        placeholder="id pedido" minlength="1" maxlength="6" required><br>
+      </div>
+      <div class="form-group  py-2">
+        <input type="text" id="txtidcli" name="txtidcli" class="form-control"
+          placeholder="id cliente" minlength="1" maxlength="100" required><br>
+      </div>
+      <div class="form-group  py-2">
+        <input type="text" id="txtidp" name="txtidp" class="form-control"
+          placeholder="id producto" minlength="1" maxlength="100" required><br>
+      </div>
+      <div class="form-group  py-2">
+        <input type="text" id="txtide" name="txtide" class="form-control"
+          placeholder="id empleado" minlength="1" maxlength="100" required><br>
+      </div>
+      <div class="form-group  py-2">
+        <input type="date" id="txtfechped" name="txtfechped" class="form-control"
+          placeholder="fecha pedido"  required><br>
+      </div>
+      <div class="form-group  py-2">
+        <input type="date" id="txtfechent" name="txtfechent" class="form-control"
+          placeholder="fecha entrega"  required><br>
+      </div>
+      <div class="form-group  py-2">
+        <input type="text" id="txttotal" name="txttotal" class="form-control"
+        placeholder="total" minlength="1" maxlength="100" required><br>
+      </div>
+      <div class="form-group  py-2">
+        <input type="text" id="txtesta" name="txtesta" class="form-control"
+        placeholder="estado del pedido" minlength="1" maxlength="100" required><br>
+      </div>
+      <div class="form-group  py-2">
+        <input type="text" id="txtmetodop" name="txtmetodop" class="form-control"
+        placeholder="metodo de pago" minlength="1" maxlength="100" required><br>
+      </div>
+      <div class="form-group  py-2">
+        <input type="text" id="txtidc" name="txtidc" class="form-control"
+          placeholder="cantidad" minlength="1" maxlength="100" required><br>
+      </div>
+      <div class="form-group  py-2">
+        <button type="submit" class="btn btn-primary">Guardar Pedido</button>
+      </div>
+    </form>
+      </div>
+    </div><!--la tarjeta-->
+</div><!--la columna izq-->
+
+<div class="col-sm-12 col-md-8 col-lg-8 xl-8"> <!--la columna der-->
+    <h1>Listado de Pedidos</h1>
+    <!-- la tabla-->
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">id pedido</th>
+            <th scope="col">id cliente</th>
+            <th scope="col">id producto</th>
+            <th scope="col">id empleado</th>
+            <th scope="col">fecha pedido</th>
+            <th scope="col">fecha entrega</th>
+            <th scope="col">total</th>
+            <th scope="col">estado del pedido</th>
+            <th scope="col">metodo de pago</th>
+            <th scope="col">cantidad</th>
+            <th >opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+         {% for m in mispedidos   %}
+         <tr>
+          <td>
+            {{forloop.counter}}
+          </td>
+          <td>
+            {{m.id_cliente}}
+          </td>
+          <td>
+            {{m.id_pedido}}
+          </td>
+          <td>
+            {{m.id_producto}}
+          </td>
+          <td>
+            {{m.id_empleado}}
+          </td>
+          <td>
+            {{m.fecha_entrega}}
+          </td>
+          <td>
+            {{m.fecha_pedido}}
+          </td>
+          <td>
+            {{m.total_pedido}}
+          </td>
+          <td>
+            {{m.estado_pedido}}
+          </td>
+          <td>
+            {{m.metodo_pago}}
+          </td>
+          <td>
+            {{m.cantidad}}
+          </td>
+          <td> <a href="seleccionarPedido/{{m.id_pedido}}" class="btn btn-info "> Editar</a></td><!--falta-->
+          <td> <a href="borrarPedido/{{m.id_pedido}}" class="btn btn-danger "> Borrar</a></td><!--falta-->
+        </tr>
+         {% endfor %}
+        
+        
+        </tbody>
+      </table>
+    <!-- la tabla-->
+</div><!--la columna der-->
+</div><!--la fila-->
+{% endblock %}
