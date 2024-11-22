@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+<div class="row"><!--la fila-->
+<div class="col-sm-12 col-md-4 col-lg-4 xl-4"> <!--la columna izq-->
+    <h1>Registrar Producto</h1>
+    <div class="card"><!--la tarjeta-->
+      <div class="card-body">
+      <form action="/editarProducto/" method="POST"> {% csrf_token %}<!-- falta action-->
+      <div class="form-group">
+        <input type="text" id="idpro" name="idpro" class="form-control"  
+        value="{{misproductos.id_producto}}" minlength="1" maxlength="6" required><br>
+      </div>
+      <div class="form-group  py-2">
+        <input type="text" id="precio" name="precio" class="form-control"
+          value="{{misproductos.precio}}" minlength="1" maxlength="100" required><br>
+      </div>
+      <div class="form-group  py-2">
+        <input type="text" id="stock" name="stock" class="form-control"
+          value="{{misproductos.stock}}" minlength="1" maxlength="100" required><br>
+      </div>
+      <div class="form-group  py-2">
+        <input type="text" id="desc" name="desc" class="form-control"
+          value="{{misproductos.descripcion}}" minlength="1" maxlength="100" required><br>
+      </div>
+      <div class="form-group  py-2">
+        <input type="text" id="tipo" name="tipo" class="form-control"
+          value="{{misproductos.tipo}}" minlength="1" maxlength="100" required><br>
+      </div>
+      <div class="form-group  py-2">
+        <input type="text" id="cate" name="categoria" class="form-control"
+          value="{{misproductos.categoria}}"  required><br>
+      </div>
+      <div class="form-group  py-2">
+        <input type="text" id="nombrepr" name="nombrepr" class="form-control"
+          value="{{misproductos.nombre}} " minlength="1" maxlength="100" required><br>
+      </div>
+      <div class="form-group  py-2">
+        <input type="text" id="idv" name="idv" class="form-control"
+        value="{{misproductos.id_proveedor}}" minlength="1" maxlength="100" required><br>
+      </div>
+      <div class="form-group  py-2">
+        <input type="text" id="ids" name="ids" class="form-control"
+        value="{{misproductos.id_sucursal}}" minlength="1" maxlength="100" required><br>
+      </div>
+      <div class="form-group  py-2">
+        <button type="submit" class="btn btn-primary">Guardar Producto</button>
+      </div>
+    </form>
+      </div>
+    </div><!--la tarjeta-->
+</div><!--la columna izq-->
+{% endblock %}
